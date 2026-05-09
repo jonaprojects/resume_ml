@@ -108,6 +108,10 @@ To treat this imbalance robustly, we apply **Category Grouping** (Dimensionality
 """)
 
 add_code("""
+print("Class sizes BEFORE mapping (24 Highly Imbalanced Categories):")
+print(df_train['Category'].value_counts())
+print("\\n" + "-"*50 + "\\n")
+
 category_mapping = {
     'INFORMATION-TECHNOLOGY': 'Technology',
     'BUSINESS-DEVELOPMENT': 'Business & Operations',
@@ -144,6 +148,9 @@ df_test = df_test.dropna(subset=['Macro_Category']).reset_index(drop=True)
 
 y_train = df_train['Macro_Category']
 y_test = df_test['Macro_Category']
+
+print("Class sizes AFTER mapping (9 Balanced Macro Categories):")
+print(y_train.value_counts())
 """)
 
 add_md("""
